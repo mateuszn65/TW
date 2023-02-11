@@ -1,0 +1,9 @@
+ignoruje
+(b) y := y + 2z
+(c) x := 3x + z
+(a) x := x + y
+
+A = {a, b, c, d}
+(d) z := y - z
+
+w = baadcb

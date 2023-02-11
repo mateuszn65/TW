@@ -1,0 +1,20 @@
+Mateusz Nowak
+
+1.1 Implementacja w klasie "BinarySemaphore"
+
+1.2 Implementacja w klasie "BinarySemaphoreIf", 
+natomiast w "Main" znajduje się kod wykonujący porównanie wyników.
+Semafor z pętlą while zawsze działa poprawnie, natomiast przy zaledwie 100 próbach
+semafor z ifem zwraca błędny wynik ok. 30 razy, co świadczy o tym, że semafor z ifem
+wpusza do sekcji krytycznej więcej niż jeden wątek na raz.
+If nie jest wystarczający, ponieważ po wybudzeniu warunek nie jest
+sprawdzany ponownie, a może się zdażyć sytuacja, że wątek zostanie 
+wybudzony, a warunek nie jest spełniony przez co nieuprawniony kod
+uzyska dostęp do sekcji krytycznej.
+Dodatkowo według dokumentacji funkcji wait() wątek może się 
+obudzić spontanicznie, czyli bez wywołania funkcji notify().
+
+1.3 Implementacja w klasie "Semaphore",
+Tak, semafor binarny jest szczególnym przypadkiem sefamora ogólnego.
+Semafor binarny przyznaje dostęp do sekcji krytycznej tylko dla jednego wątku,
+natomiast semafor ogólny może przyznawać dostęp dla określonej liczby wątków.
